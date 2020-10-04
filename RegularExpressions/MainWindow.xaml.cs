@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -23,6 +24,29 @@ namespace RegularExpressions
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void btnSave_Click(object sender, RoutedEventArgs e)
+        {
+            string name = "[A-Za-z]";
+            string whitespace = @"\s";
+            string pattern = "^(" + name + whitespace "*)+$";
+            //if (!Regex.IsMatch(txtName.Text, @"^([A-Za-z]+\s*)+$"))
+            //    MessageBox.Show("The name is invalid (only aplhabetgical characters are allowed)");
+            if (!Regex.IsMatch(txtName.Text, @"^([A-Za-z]+\s*)+$"))
+                MessageBox.Show("The name is invalid (only aplhabetgical characters are allowed)");
+
+
+            if (!Regex.IsMatch(txtPhone.Text, @"^(\+[0-9]{11})$"))
+                MessageBox.Show("The phone is invalid ");
+
+            if (!Regex.IsMatch(txtEmail.Text, @"^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$"))
+                MessageBox.Show("The email is invalid ");
+
+
+            {
+
+            }
         }
     }
 }
